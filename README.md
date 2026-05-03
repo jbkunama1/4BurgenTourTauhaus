@@ -47,16 +47,9 @@ flowchart LR
 - Das **Tauhaus** beschreibt sich selbst als Haus am Fluss mit privatem Zugang zur **Střela** und als Ort mit enger Verbindung von Haus, Garten, Fluss und Umgebung. [web:59][web:30]
 - Die Region um **Manětín / Rabštejn** eignet sich für kurze Rundtouren mit Natur und Kultur. [web:37][web:54]
 
-## 🎨 Design-Hinweise für GitHub
-
-- Nutze Emojis sparsam als Wegmarken.
-- Der Mermaid-Block wird auf GitHub direkt gerendert.
-- Für ein farbiges Erscheinungsbild kannst du Überschriften mit Emojis und Trennlinien verwenden.
-- Optional kannst du zusätzlich eine PNG-Karte im Repo ablegen und hier verlinken.
 
 ## ✅ Hinweise
 
 - Die Route ist als **individuelle Rundtour** gedacht.
 - Start und Ziel bleiben **immer Tauhaus**.
 - Für 90–120 Minuten ist die Schleife bewusst kompakt gehalten.
-- Bei Bedarf kann die Runde noch auf **mehr Aussicht** oder **mehr historische Stopps** optimiert werden.
