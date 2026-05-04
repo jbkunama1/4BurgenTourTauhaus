@@ -79,8 +79,15 @@ Das Besondere: Wer möchte, kann an mehreren Stellen barfuß durch die flache St
 
 ## 🏛️ Historischer Hintergrund
 
-**Rabštejn nad Střelou** gilt als eine der kleinsten historischen Städte Tschechiens. Das mittelalterliche Stadtbild mit dem Burgturm, dem barocken Zámek (Schloss), der Klosterkirche und der historischen Steinbrücke ist bemerkenswert gut erhalten. Die gesamte Anlage liegt auf einem Felsplateau über dem Fluss.
+Der Ort **Rabštejn nad Střelou** wurde erstmals im 13. Jahrhundert erwähnt und wuchs rund um eine strategisch wichtige Burg über einer Schleife der Střela.[web:22][web:25] Die Burg diente als königlicher Stützpunkt zur Sicherung von Handelswegen durch Westböhmen, später verlieh König Karl IV. dem Ort zusätzliche Rechte und machte ihn zu einem Umschlagpunkt für Waren und Zölle.[web:26][web:32]
 
+Im Jahr **1337** erhielt Rabštejn Stadtrechte, womit auch der Ausbau von Befestigungsanlagen, Stadttoren und steinernen Häusern begann.[web:22][web:25] Aus dieser Phase stammt vermutlich auch die **gotische Steinbrücke** über die Střela, die im 14. Jahrhundert errichtet wurde und als eines der ältesten Steinbrückenbauwerke in Tschechien gilt – älter als viele bekannte Brücken im Land.[web:25][web:27][web:36]
+
+Die Geschichte des Ortes ist geprägt von häufig wechselnden Adelsfamilien, darunter die **Pflugk von Rabstein**, die Grafen **Schlik**, später die Familien **Pötting**, **Černín**, **Kolowrat** und **Lažanský**.[web:22][web:25][web:35] Im 16. Jahrhundert zerstörten Brände Burg und Stadt weitgehend, woraufhin große Teile neu aufgebaut und die mittelalterliche Burg im 17. und 18. Jahrhundert zu einem barocken Schloss umgestaltet wurden.[web:22][web:35]
+
+Direkt neben Burg und Schloss entstand zunächst ein Karmelitenkloster, das nach einem Brand im 16. Jahrhundert durch ein **Servitenkloster** ersetzt wurde.[web:22][web:35] Die Kloster- und Schlossanlagen prägen bis heute das Bild des Ortes: barocke Gebäudekomplexe, Ruinen der mittelalterlichen Burg und Reste der Stadtbefestigung liegen dicht gedrängt auf einem Felsrücken über dem Flusstal.[web:24][web:32]
+
+Der Aussichtspunkt **Hraběcí kříž** („Grafenkreuz“) oberhalb der Stadt trägt seinen Namen nach einer lokalen Legende: Demnach verweigerte ein Pferd seinem Grafen bei dichter Nebelwand die Gefolgschaft – erst im Morgengrauen erkannte der Reiter, dass direkt vor ihm eine tiefe Schlucht lag.[web:28][web:34] Aus Dankbarkeit für die Rettung ließ er an dieser Stelle ein Kreuz errichten; heute markiert dort ein neuer Holzkreuz und eine Infotafel die beliebte **Vyhlídka** mit Blick auf Schloss, Kloster und das enge Tal der Střela.[web:28][web:31]
 ---
 
 ## ✅ Tipps & Hinweise
