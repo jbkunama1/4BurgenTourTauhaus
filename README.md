@@ -77,6 +77,15 @@ Das Besondere: Wer möchte, kann an mehreren Stellen barfuß durch die flache St
 
 ---
 
+## 🗺️ Karte
+
+Die Tour ist auf OpenStreetMap verfügbar:  
+🔗 [Karte auf OpenStreetMap](https://www.openstreetmap.org/#map=14/50.0198/13.5900)  
+🔗 [Tour auf Mapy.cz](https://mapy.cz/turisticka?x=13.590&y=50.020&z=14)  
+⬇️ [GPX-Datei herunterladen](assets/route/4BurgenTour_Tauhaus.gpx)
+
+---
+
 ## 🏛️ Historischer Hintergrund
 
 Der Ort **Rabštejn nad Střelou** wurde erstmals im 13. Jahrhundert erwähnt und wuchs rund um eine strategisch wichtige Burg über einer Schleife der Střela.[web:22][web:25] Die Burg diente als königlicher Stützpunkt zur Sicherung von Handelswegen durch Westböhmen, später verlieh König Karl IV. dem Ort zusätzliche Rechte und machte ihn zu einem Umschlagpunkt für Waren und Zölle.[web:26][web:32]
