@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="4BurgenTourTauhaus"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1
+     http://www.topografix.com/GPX/1/1/gpx.xsd">
+
+  <metadata>
+    <name>4-Burgen-Tour am Tauhaus · Rabštejn nad Střelou</name>
+    <desc>Rundtour vom Tauhaus entlang der Střela durch Rabštejn nad Střelou zum Aussichtspunkt Hraběcí kříž (485 m) und zurück. Ca. 90–120 Minuten, leicht bis mittel.</desc>
+    <author><name>Tauhaus Rabštejn</name></author>
+    <link href="https://github.com/jbkunama1/4BurgenTourTauhaus">
+      <text>GitHub Repository</text>
+    </link>
+    <time>2026-05-02T10:00:00Z</time>
+    <keywords>Wandern, Böhmen, Střela, Rabštejn, Tauhaus, Burgen, Aussichtspunkt</keywords>
+  </metadata>
+
+  <!-- Wegpunkte (Waypoints) -->
+  <wpt lat="50.0195" lon="13.5892">
+    <ele>390</ele>
+    <name>1 · Tauhaus (Start &amp; Ziel)</name>
+    <desc>Start und Ziel der Tour. Direkt an der Střela.</desc>
+    <sym>Flag, Green</sym>
+  </wpt>
+
+  <wpt lat="50.0210" lon="13.5870">
+    <ele>385</ele>
+    <name>2 · Střela-Ufer</name>
+    <desc>Ruhiger Naturpfad entlang des Flusses Střela.</desc>
+    <sym>Dot</sym>
+  </wpt>
+
+  <wpt lat="50.0225" lon="13.5845">
+    <ele>382</ele>
+    <name>3 · Bachquerung</name>
+    <desc>Barfuß durch die seichte Střela. Nur bei niedrigem Wasserstand!</desc>
+    <sym>Dot</sym>
+  </wpt>
+
+  <wpt lat="50.0240" lon="13.5830">
+    <ele>395</ele>
+    <name>4 · Rabštejn nad Střelou (Ortskern)</name>
+    <desc>Historischer Ortskern, Klosterkirche, Maibaum. Kleinste hist. Stadt Tschechiens.</desc>
+    <sym>City (Small)</sym>
+  </wpt>
+
+  <wpt lat="50.0235" lon="13.5815">
+    <ele>392</ele>
+    <name>5 · Historische Steinbrücke</name>
+    <desc>Mittelalterliche Steinbrücke über die Střela, ca. 14. Jh.</desc>
+    <sym>Bridge</sym>
+  </wpt>
+
+  <wpt lat="50.0248" lon="13.5820">
+    <ele>420</ele>
+    <name>6 · Burgturm &amp; Schloss Rabštejn</name>
+    <desc>Ruine des mittelalterlichen Burgturms und barockes Schloss Rabštejn.</desc>
+    <sym>Castle</sym>
+  </wpt>
+
+  <wpt lat="50.0265" lon="13.5840">
+    <ele>485</ele>
+    <name>7 · Hraběcí kříž – Vyhlídka (485 m)</name>
+    <desc>Aussichtspunkt „Grafenkreuz" mit Panoramablick auf Rabštejn und die Střela.</desc>
+    <sym>Summit</sym>
+  </wpt>
+
+  <!-- Route -->
+  <rte>
+    <name>4-Burgen-Tour Tauhaus · Rundtour</name>
+    <desc>Rundtour ca. 90–120 Min · leicht bis mittel</desc>
+    <rtept lat="50.0195" lon="13.5892"><ele>390</ele><name>Tauhaus</name></rtept>
+    <rtept lat="50.0210" lon="13.5870"><ele>385</ele><name>Střela-Ufer</name></rtept>
+    <rtept lat="50.0225" lon="13.5845"><ele>382</ele><name>Bachquerung</name></rtept>
+    <rtept lat="50.0240" lon="13.5830"><ele>395</ele><name>Rabštejn Ortskern</name></rtept>
+    <rtept lat="50.0235" lon="13.5815"><ele>392</ele><name>Steinbrücke</name></rtept>
+    <rtept lat="50.0248" lon="13.5820"><ele>420</ele><name>Burgturm &amp; Schloss</name></rtept>
+    <rtept lat="50.0265" lon="13.5840"><ele>485</ele><name>Hraběcí kříž – Vyhlídka</name></rtept>
+    <rtept lat="50.0250" lon="13.5858"><ele>460</ele><name>Abstieg Richtung Tauhaus</name></rtept>
+    <rtept lat="50.0220" lon="13.5878"><ele>415</ele><name>Rückweg Waldpfad</name></rtept>
+    <rtept lat="50.0195" lon="13.5892"><ele>390</ele><name>Tauhaus (Ziel)</name></rtept>
+  </rte>
+
+  <!-- Track (detailliertere Linie für Kartentools) -->
+  <trk>
+    <name>4-Burgen-Tour Tauhaus</name>
+    <trkseg>
+      <trkpt lat="50.0195" lon="13.5892"><ele>390</ele></trkpt>
+      <trkpt lat="50.0200" lon="13.5885"><ele>388</ele></trkpt>
+      <trkpt lat="50.0208" lon="13.5875"><ele>386</ele></trkpt>
+      <trkpt lat="50.0215" lon="13.5862"><ele>384</ele></trkpt>
+      <trkpt lat="50.0222" lon="13.5850"><ele>382</ele></trkpt>
+      <trkpt lat="50.0228" lon="13.5842"><ele>383</ele></trkpt>
+      <trkpt lat="50.0235" lon="13.5833"><ele>390</ele></trkpt>
+      <trkpt lat="50.0240" lon="13.5830"><ele>395</ele></trkpt>
+      <trkpt lat="50.0238" lon="13.5820"><ele>393</ele></trkpt>
+      <trkpt lat="50.0235" lon="13.5815"><ele>392</ele></trkpt>
+      <trkpt lat="50.0240" lon="13.5815"><ele>400</ele></trkpt>
+      <trkpt lat="50.0245" lon="13.5818"><ele>412</ele></trkpt>
+      <trkpt lat="50.0248" lon="13.5820"><ele>420</ele></trkpt>
+      <trkpt lat="50.0252" lon="13.5825"><ele>438</ele></trkpt>
+      <trkpt lat="50.0258" lon="13.5832"><ele>458</ele></trkpt>
+      <trkpt lat="50.0263" lon="13.5838"><ele>478</ele></trkpt>
+      <trkpt lat="50.0265" lon="13.5840"><ele>485</ele></trkpt>
+      <trkpt lat="50.0262" lon="13.5848"><ele>475</ele></trkpt>
+      <trkpt lat="50.0257" lon="13.5855"><ele>460</ele></trkpt>
+      <trkpt lat="50.0250" lon="13.5860"><ele>445</ele></trkpt>
+      <trkpt lat="50.0242" lon="13.5868"><ele>428</ele></trkpt>
+      <trkpt lat="50.0235" lon="13.5872"><ele>415</ele></trkpt>
+      <trkpt lat="50.0225" lon="13.5878"><ele>405</ele></trkpt>
+      <trkpt lat="50.0215" lon="13.5883"><ele>397</ele></trkpt>
+      <trkpt lat="50.0205" lon="13.5888"><ele>393</ele></trkpt>
+      <trkpt lat="50.0195" lon="13.5892"><ele>390</ele></trkpt>
+    </trkseg>
+  </trk>
+
+</gpx>
