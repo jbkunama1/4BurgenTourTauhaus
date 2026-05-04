@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="slides-format" content="viewport">
+  <title>4-Burgen-Tour am Tauhaus · Rabštejn nad Střelou</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg: #0f1a0e;
+      --color-bg-deep: #070f06;
+      --color-surface: #1a2e18;
+      --color-text: #f0f4ee;
+      --color-text-secondary: #c8d5c4;
+      --color-text-muted: #8fa889;
+      --color-accent-1: #7cb87a;
+      --color-accent-2: #c9a227;
+      --color-accent-3: #a8d5a2;
+      --color-glass-bg: rgba(255,255,255,0.05);
+      --color-glass-border: rgba(255,255,255,0.09);
+      --color-vignette: rgba(0,0,0,0.45);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Work Sans', sans-serif;
+    }
+  </style>
+
+  <style>
+    :root {
+      --color-bg: #0f1a0e;
+      --color-text: #f0f4ee;
+      --glow-color-rgb: 124,184,122;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { background: var(--color-bg); margin: 0; }
+    body { font-family: 'Work Sans', sans-serif; color: var(--color-text); overflow: hidden; height: 100vh; width: 100vw; }
+    .deck { width: 100vw; height: 100vh; position: relative; }
+    .slide {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--color-bg); display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; transform: scale(0.96);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+      pointer-events: none; overflow: hidden;
+    }
+    .slide.active { opacity: 1; transform: scale(1); pointer-events: all; }
+    .slide > .content {
+      position: relative; z-index: 2; width: 100%;
+      max-width: 1100px; padding: clamp(1.5rem, 4vw, 4rem);
+    }
+    .nav-controls {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 16px; z-index: 100;
+      background: rgba(255,255,255,0.06); backdrop-filter: blur(12px);
+      padding: 10px 24px; border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-btn {
+      width: 40px; height: 40px; border: none;
+      background: rgba(255,255,255,0.07); color: #7cb87a;
+      border-radius: 50%; font-size: 1.3rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.14); }
+    .slide-dots { display: flex; gap: 8px; }
+    .slide-dots .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .slide-dots .dot.active { background: #7cb87a; transform: scale(1.3); }
+    .slide-counter { font-size: 0.8rem; color: #8fa889; min-width: 40px; text-align: center; }
+    .reveal { opacity: 0; transform: translateY(22px); }
+
+    /* Glows */
+    .text-glow { text-shadow: 0 0 20px rgba(124,184,122,0.5), 0 0 40px rgba(124,184,122,0.2); }
+    .gold-glow { text-shadow: 0 0 20px rgba(201,162,39,0.6), 0 0 40px rgba(201,162,39,0.25); }
+    @keyframes glow-pulse {
+      0%,100% { text-shadow: 0 0 20px rgba(124,184,122,0.5), 0 0 40px rgba(124,184,122,0.2); }
+      50% { text-shadow: 0 0 35px rgba(124,184,122,0.9), 0 0 70px rgba(124,184,122,0.35); }
+    }
+    .glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+    /* Blobs */
+    @keyframes float-slow {
+      0% { transform: translate(0,0) scale(1); }
+      25% { transform: translate(60px,-50px) scale(1.12); }
+      50% { transform: translate(-40px,40px) scale(0.9); }
+      75% { transform: translate(50px,20px) scale(1.08); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+    @keyframes float-drift {
+      0% { transform: translate(0,0) scale(1) rotate(0deg); }
+      33% { transform: translate(-50px,-60px) scale(1.15) rotate(3deg); }
+      66% { transform: translate(40px,30px) scale(0.88) rotate(-2deg); }
+      100% { transform: translate(0,0) scale(1) rotate(0deg); }
+    }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    .gradient-mesh { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); animation: float-slow 10s ease-in-out infinite; }
+    .blob:nth-child(2) { animation: float-drift 14s ease-in-out infinite; }
+    .blob:nth-child(3) { animation: float-slow 18s ease-in-out infinite reverse; }
+    .blob:nth-child(4) { animation: float-drift 22s ease-in-out infinite reverse; }
+
+    /* Cinematic depth */
+    .slide::before {
+      content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size:256px 256px; opacity:0.035; mix-blend-mode:overlay;
+    }
+    .slide::after {
+      content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:radial-gradient(ellipse at center, transparent 50%, var(--color-vignette) 100%);
+    }
+
+    /* Stat card glow */
+    .stat-num { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,4vw,3rem); font-weight:900; }
+
+    /* Timeline */
+    .timeline-line {
+      position:absolute; left:20px; top:0; bottom:0; width:2px;
+      background:linear-gradient(to bottom, #7cb87a, #c9a227, #7cb87a);
+    }
+    .timeline-dot {
+      width:14px; height:14px; border-radius:50%; background:#7cb87a; flex-shrink:0;
+      box-shadow: 0 0 10px rgba(124,184,122,0.7), 0 0 20px rgba(124,184,122,0.3);
+      margin-top:3px;
+    }
+
+    /* Mouse spotlight */
+    .mouse-spotlight { position:fixed; inset:0; z-index:99; pointer-events:none; }
+
+    /* Parallax deco shapes */
+    .deco-shape { position:absolute; border-radius:50%; pointer-events:none; will-change:transform; }
+
+    @media (prefers-reduced-motion:reduce) {
+      *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.2s !important; }
+    }
+
+    /* ── Slide-specific ── */
+    .slide-1 .hero-emoji { font-size:clamp(5rem,10vw,8rem); display:block; text-align:center; animation:float 3s ease-in-out infinite; }
+    .badge-pill { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(124,184,122,0.12); border:1px solid rgba(124,184,122,0.25); border-radius:999px; padding:0.35rem 1rem; font-size:0.85rem; color:#a8d5a2; }
+    .glass-card { background:rgba(255,255,255,0.05); backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,0.09); border-radius:14px; transition:transform 0.3s ease, box-shadow 0.3s ease; }
+    .glass-card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(124,184,122,0.15); }
+    .accent-bar { display:block; height:3px; width:48px; background:linear-gradient(to right,#7cb87a,#c9a227); border-radius:2px; margin-bottom:1rem; }
+    .step-badge { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#7cb87a,#c9a227); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; color:#0f1a0e; flex-shrink:0; }
+  </style>
+</head>
+<body>
+
+<div class="mouse-spotlight"></div>
+
+<div class="deck">
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 1: TITEL
+  ═══════════════════════════════════════════ -->
+  <div class="slide active" data-slide="1">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:550px;height:550px;top:-120px;right:-120px;background:#2d6a4f;opacity:0.18;"></div>
+      <div class="blob" style="width:350px;height:350px;bottom:-100px;left:-80px;background:#c9a227;opacity:0.13;"></div>
+      <div class="blob" style="width:240px;height:240px;top:40%;left:20%;background:#7cb87a;opacity:0.1;"></div>
+      <div class="blob" style="width:180px;height:180px;bottom:20%;right:20%;background:#52b788;opacity:0.09;"></div>
+    </div>
+    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content text-center">
+      <span class="hero-emoji reveal">🏰</span>
+      <h1 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.8rem);font-weight:900;background:linear-gradient(135deg,#7cb87a,#c9a227,#7cb87a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15;margin:1rem 0 0.5rem;">4-Burgen-Tour<br>am Tauhaus</h1>
+      <p class="reveal" style="font-size:clamp(0.85rem,1.5vw,1.1rem);letter-spacing:0.4em;text-transform:uppercase;color:#8fa889;margin-bottom:2rem;">Rabštejn nad Střelou · Böhmen · Mai 2026</p>
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;">
+        <span class="badge-pill">⏱ 90–120 Min</span>
+        <span class="badge-pill">🌊 Střela-Ufer</span>
+        <span class="badge-pill">🏰 Burgen & Schloss</span>
+        <span class="badge-pill">👀 485 m Aussichtspunkt</span>
+        <span class="badge-pill">👟 Barfuß Flussquerung</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 2: ÜBERBLICK (Stats)
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="2">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:380px;height:380px;top:-80px;right:-80px;background:#2d6a4f;opacity:0.1;"></div>
+      <div class="blob" style="width:260px;height:260px;bottom:-60px;left:-50px;background:#c9a227;opacity:0.08;"></div>
+    </div>
+    <div class="deco-shape" data-speed="0.03" style="width:200px;height:200px;top:10%;left:5%;background:linear-gradient(135deg,#7cb87a,transparent);opacity:0.06;"></div>
+    <div class="content">
+      <span class="accent-bar reveal"></span>
+      <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:2rem;">Tour auf einen Blick</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;">
+        <div class="glass-card reveal" style="padding:1.5rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">⏱</div>
+          <div class="stat-num glow-pulse" style="color:#7cb87a;" data-count="120">0</div>
+          <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#8fa889;margin-top:0.3rem;">Max. Minuten</div>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🏔</div>
+          <div class="stat-num gold-glow" style="color:#c9a227;">485</div>
+          <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#8fa889;margin-top:0.3rem;">Höchster Punkt (m)</div>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🏰</div>
+          <div class="stat-num glow-pulse" style="color:#7cb87a;" data-count="4">0</div>
+          <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#8fa889;margin-top:0.3rem;">Hist. Stationen</div>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🌊</div>
+          <div class="stat-num" style="color:#a8d5a2;font-size:1.6rem;">Střela</div>
+          <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#8fa889;margin-top:0.3rem;">Fluss mit Querung</div>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">👟</div>
+          <div class="stat-num" style="color:#a8d5a2;font-size:1.6rem;">Leicht</div>
+          <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#8fa889;margin-top:0.3rem;">Schwierigkeit</div>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🔄</div>
+          <div class="stat-num" style="color:#a8d5a2;font-size:1.6rem;">Runde</div>
+          <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#8fa889;margin-top:0.3rem;">Start = Ziel: Tauhaus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 3: TAUHAUS
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="3">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:420px;height:420px;bottom:-100px;right:-80px;background:#2d6a4f;opacity:0.12;"></div>
+      <div class="blob" style="width:240px;height:240px;top:-60px;left:-40px;background:#c9a227;opacity:0.08;"></div>
+    </div>
+    <div class="content" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+      <div>
+        <span class="accent-bar reveal"></span>
+        <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:1.2rem;">Das Tauhaus</h2>
+        <p class="reveal" style="color:#c8d5c4;line-height:1.75;margin-bottom:1rem;">Idyllisches Ferienhaus direkt an der <strong style="color:#7cb87a;">Střela</strong> mit privatem Flusszugang, Garten und Liegestühlen. Hier beginnt und endet die Tour.</p>
+        <p class="reveal" style="color:#8fa889;line-height:1.75;font-size:0.95rem;">Rabštejn nad Střelou 72, Manětín · Westböhmen, Tschechien</p>
+        <div class="reveal" style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem;">
+          <span class="badge-pill">🏡 Flusszugang direkt am Haus</span>
+          <span class="badge-pill">🌿 Start & Ziel aller Touren</span>
+          <span class="badge-pill">🐱 Freundliche Hauskatze inklusive</span>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;font-size:clamp(8rem,15vw,12rem);filter:drop-shadow(0 0 30px rgba(124,184,122,0.3));animation:float 4s ease-in-out infinite;">🏡</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 4: DIE STŘELA IM FRÜHLING
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="4">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:450px;height:450px;top:-100px;left:-100px;background:#1a4e5a;opacity:0.15;"></div>
+      <div class="blob" style="width:300px;height:300px;bottom:-80px;right:-60px;background:#52b788;opacity:0.1;"></div>
+    </div>
+    <canvas class="particle-canvas-ambient" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content">
+      <span class="accent-bar reveal"></span>
+      <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:0.5rem;">Die Střela im Frühling</h2>
+      <p class="reveal" style="color:#8fa889;margin-bottom:1.5rem;font-size:0.95rem;">Kirschblütenblätter auf dem Wasser – stimmungsvoller Naturpfad entlang des Flusses</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;">
+        <div class="glass-card reveal" style="padding:1.5rem;">
+          <div style="font-size:2rem;margin-bottom:0.7rem;">🌸</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.5rem;">Kirschblüten</h4>
+          <p style="color:#c8d5c4;font-size:0.9rem;line-height:1.6;">Rosa Blütenblätter treiben auf der Střela – im Mai ein unvergessliches Naturschauspiel.</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;">
+          <div style="font-size:2rem;margin-bottom:0.7rem;">💧</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.5rem;">Kristallklares Wasser</h4>
+          <p style="color:#c8d5c4;font-size:0.9rem;line-height:1.6;">Die Střela ist ein sauberer, ruhig fließender Fluss – ideal für die Barfuß-Querung.</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;">
+          <div style="font-size:2rem;margin-bottom:0.7rem;">🌿</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.5rem;">Naturpfad</h4>
+          <p style="color:#c8d5c4;font-size:0.9rem;line-height:1.6;">Unberührte Uferwege durch Kiefer- und Mischwälder – kaum touristisch erschlossen.</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.5rem;">
+          <div style="font-size:2rem;margin-bottom:0.7rem;">👟</div>
+          <h4 style="color:#c9a227;margin-bottom:0.5rem;">Flussquerung</h4>
+          <p style="color:#c8d5c4;font-size:0.9rem;line-height:1.6;">An der flachsten Stelle barfuß durch die Střela – ca. knietief bei Niedrigwasser.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 5: HISTORISCHER HINTERGRUND
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="5">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:400px;height:400px;top:-80px;right:-80px;background:#3d2b00;opacity:0.2;"></div>
+      <div class="blob" style="width:280px;height:280px;bottom:-70px;left:-50px;background:#c9a227;opacity:0.1;"></div>
+    </div>
+    <div class="deco-shape" data-speed="0.025" style="width:300px;height:300px;top:5%;right:10%;background:linear-gradient(135deg,#c9a227,transparent);opacity:0.05;"></div>
+    <div class="content">
+      <span class="accent-bar reveal" style="background:linear-gradient(to right,#c9a227,#7cb87a);"></span>
+      <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:1.5rem;">🏛️ Geschichte & Mittelalter</h2>
+      <div style="display:flex;flex-direction:column;gap:0.8rem;position:relative;padding-left:3rem;">
+        <div class="timeline-line"></div>
+        <div class="reveal" style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="timeline-dot" style="margin-left:-1.35rem;"></div>
+          <div class="glass-card" style="padding:1rem 1.2rem;flex:1;">
+            <span style="color:#c9a227;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">13. Jahrhundert</span>
+            <p style="color:#c8d5c4;font-size:0.9rem;margin-top:0.2rem;line-height:1.6;">Erste Erwähnung des Ortes. Burg über der Střela als königlicher Stützpunkt zur Sicherung von Handelswegen.</p>
+          </div>
+        </div>
+        <div class="reveal" style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="timeline-dot" style="margin-left:-1.35rem;background:#c9a227;box-shadow:0 0 10px rgba(201,162,39,0.7);"></div>
+          <div class="glass-card" style="padding:1rem 1.2rem;flex:1;">
+            <span style="color:#c9a227;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">1337</span>
+            <p style="color:#c8d5c4;font-size:0.9rem;margin-top:0.2rem;line-height:1.6;">Stadtrechte verliehen. Bau der gotischen Steinbrücke – eines der ältesten Steinbrückenbauwerke Tschechiens.</p>
+          </div>
+        </div>
+        <div class="reveal" style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="timeline-dot" style="margin-left:-1.35rem;"></div>
+          <div class="glass-card" style="padding:1rem 1.2rem;flex:1;">
+            <span style="color:#7cb87a;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">16. – 18. Jahrhundert</span>
+            <p style="color:#c8d5c4;font-size:0.9rem;margin-top:0.2rem;line-height:1.6;">Nach Bränden Neuaufbau. Mittelalterliche Burg zum barocken Schloss umgestaltet. Servitenkloster errichtet.</p>
+          </div>
+        </div>
+        <div class="reveal" style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="timeline-dot" style="margin-left:-1.35rem;background:#c9a227;box-shadow:0 0 10px rgba(201,162,39,0.7);"></div>
+          <div class="glass-card" style="padding:1rem 1.2rem;flex:1;">
+            <span style="color:#c9a227;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Heute</span>
+            <p style="color:#c8d5c4;font-size:0.9rem;margin-top:0.2rem;line-height:1.6;">Kleinste historische Stadt Tschechiens. Burgturm, Schloss, Klosterkirche und Steinbrücke auf engstem Raum.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 6: WEGPUNKTE
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="6">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:350px;height:350px;top:-70px;left:-70px;background:#2d6a4f;opacity:0.1;"></div>
+      <div class="blob" style="width:250px;height:250px;bottom:-60px;right:-50px;background:#52b788;opacity:0.08;"></div>
+    </div>
+    <div class="content">
+      <span class="accent-bar reveal"></span>
+      <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:1.5rem;">📍 Die 7 Wegpunkte</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;">
+        <div class="glass-card reveal" style="padding:0.9rem 1.1rem;display:flex;gap:0.8rem;align-items:center;">
+          <div class="step-badge">1</div>
+          <div><strong style="font-size:0.9rem;">Tauhaus</strong><br><span style="color:#8fa889;font-size:0.8rem;">Start & Ziel · 0 min</span></div>
+        </div>
+        <div class="glass-card reveal" style="padding:0.9rem 1.1rem;display:flex;gap:0.8rem;align-items:center;">
+          <div class="step-badge">2</div>
+          <div><strong style="font-size:0.9rem;">Střela-Ufer</strong><br><span style="color:#8fa889;font-size:0.8rem;">Naturpfad · 10–15 min</span></div>
+        </div>
+        <div class="glass-card reveal" style="padding:0.9rem 1.1rem;display:flex;gap:0.8rem;align-items:center;">
+          <div class="step-badge">3</div>
+          <div><strong style="font-size:0.9rem;">Bachquerung 🌊</strong><br><span style="color:#8fa889;font-size:0.8rem;">Barfuß durch die Střela · 20–30 min</span></div>
+        </div>
+        <div class="glass-card reveal" style="padding:0.9rem 1.1rem;display:flex;gap:0.8rem;align-items:center;">
+          <div class="step-badge">4</div>
+          <div><strong style="font-size:0.9rem;">Rabštejn Ortskern</strong><br><span style="color:#8fa889;font-size:0.8rem;">Kirche & Maibaum · 30–40 min</span></div>
+        </div>
+        <div class="glass-card reveal" style="padding:0.9rem 1.1rem;display:flex;gap:0.8rem;align-items:center;">
+          <div class="step-badge">5</div>
+          <div><strong style="font-size:0.9rem;">Steinbrücke 🌉</strong><br><span style="color:#8fa889;font-size:0.8rem;">Mittelalterlich, 14. Jh. · 40–50 min</span></div>
+        </div>
+        <div class="glass-card reveal" style="padding:0.9rem 1.1rem;display:flex;gap:0.8rem;align-items:center;">
+          <div class="step-badge">6</div>
+          <div><strong style="font-size:0.9rem;">Burgturm & Schloss 🏰</strong><br><span style="color:#8fa889;font-size:0.8rem;">Historische Anlage · 50–70 min</span></div>
+        </div>
+        <div class="glass-card reveal" style="padding:0.9rem 1.1rem;display:flex;gap:0.8rem;align-items:center;grid-column:1/-1;border-color:rgba(201,162,39,0.25);">
+          <div class="step-badge" style="background:linear-gradient(135deg,#c9a227,#7cb87a);">7</div>
+          <div><strong style="font-size:0.9rem;color:#c9a227;">Hraběcí kříž – Vyhlídka 👀</strong><br><span style="color:#8fa889;font-size:0.8rem;">Aussichtspunkt 485 m · Panoramablick · 70–90 min</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 7: HRABĚCÍ KŘÍŽ – DIE LEGENDE
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="7">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:480px;height:480px;top:-100px;right:-100px;background:#1a3a00;opacity:0.2;"></div>
+      <div class="blob" style="width:320px;height:320px;bottom:-80px;left:-60px;background:#c9a227;opacity:0.12;"></div>
+      <div class="blob" style="width:200px;height:200px;top:50%;left:40%;background:#7cb87a;opacity:0.08;"></div>
+    </div>
+    <canvas class="particle-canvas-ambient" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+      <div>
+        <span class="accent-bar reveal" style="background:linear-gradient(to right,#c9a227,#7cb87a);"></span>
+        <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;margin-bottom:1.2rem;">Hraběcí kříž<br><span style="color:#c9a227;">Das Grafenkreuz</span></h2>
+        <div class="glass-card reveal" style="padding:1.4rem;border-color:rgba(201,162,39,0.2);">
+          <p style="color:#c8d5c4;line-height:1.8;font-style:italic;font-size:0.95rem;">"Ein Graf ritt durch dichten Nebel – sein Pferd verweigerte jeden Schritt vorwärts. Als der Morgen graute, erkannte der Reiter: Direkt vor ihm öffnete sich eine tiefe Schlucht über dem Střela-Tal."</p>
+        </div>
+        <p class="reveal" style="color:#8fa889;font-size:0.9rem;margin-top:1rem;line-height:1.6;">Aus Dankbarkeit für die gerettete Rettung ließ der Graf ein Kreuz errichten. Heute markiert ein Holzkreuz und eine Infotafel den Aussichtspunkt mit Panoramablick auf Schloss und Klosterkirche.</p>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div style="font-size:clamp(6rem,12vw,10rem);filter:drop-shadow(0 0 30px rgba(201,162,39,0.4));animation:float 4s ease-in-out infinite;">✝️</div>
+        <div style="margin-top:1rem;">
+          <div class="stat-num gold-glow" style="color:#c9a227;">485 m</div>
+          <div style="color:#8fa889;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem;">Höhe über NN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 8: TIPPS & HINWEISE
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="8">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:360px;height:360px;bottom:-80px;right:-60px;background:#2d6a4f;opacity:0.1;"></div>
+      <div class="blob" style="width:240px;height:240px;top:-50px;left:-40px;background:#52b788;opacity:0.08;"></div>
+    </div>
+    <div class="content">
+      <span class="accent-bar reveal"></span>
+      <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:1.5rem;">✅ Tipps & Hinweise</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+        <div class="glass-card reveal" style="padding:1.2rem;">
+          <div style="font-size:1.8rem;margin-bottom:0.6rem;">👟</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.4rem;font-size:0.95rem;">Schuhe</h4>
+          <p style="color:#c8d5c4;font-size:0.85rem;line-height:1.5;">Wasserfeste Sandalen oder Barfußschuhe für die Flussquerung empfohlen.</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.2rem;">
+          <div style="font-size:1.8rem;margin-bottom:0.6rem;">🌊</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.4rem;font-size:0.95rem;">Wasserstand</h4>
+          <p style="color:#c8d5c4;font-size:0.85rem;line-height:1.5;">Querung nur bei niedrigem Stand. Nach Regen unbedingt Brücke nutzen!</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.2rem;">
+          <div style="font-size:1.8rem;margin-bottom:0.6rem;">🍽️</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.4rem;font-size:0.95rem;">Verpflegung</h4>
+          <p style="color:#c8d5c4;font-size:0.85rem;line-height:1.5;">Kleine Gastronomie im Ortskern Rabštejn – ideal für eine Pause.</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.2rem;">
+          <div style="font-size:1.8rem;margin-bottom:0.6rem;">🚗</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.4rem;font-size:0.95rem;">Anreise</h4>
+          <p style="color:#c8d5c4;font-size:0.85rem;line-height:1.5;">Tauhaus: Rabštejn nad Střelou 72. Parken direkt am Haus.</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.2rem;">
+          <div style="font-size:1.8rem;margin-bottom:0.6rem;">📅</div>
+          <h4 style="color:#7cb87a;margin-bottom:0.4rem;font-size:0.95rem;">Beste Zeit</h4>
+          <p style="color:#c8d5c4;font-size:0.85rem;line-height:1.5;">Frühling & Herbst. Im Mai Kirschblüte – besonders stimmungsvoll.</p>
+        </div>
+        <div class="glass-card reveal" style="padding:1.2rem;border-color:rgba(201,162,39,0.2);">
+          <div style="font-size:1.8rem;margin-bottom:0.6rem;">🐱</div>
+          <h4 style="color:#c9a227;margin-bottom:0.4rem;font-size:0.95rem;">Insider-Tipp</h4>
+          <p style="color:#c8d5c4;font-size:0.85rem;line-height:1.5;">Die Hauskatze begrüßt Gäste persönlich auf dem Kopfsteinpflaster.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FOLIE 9: ABSCHLUSS
+  ═══════════════════════════════════════════ -->
+  <div class="slide" data-slide="9">
+    <div class="gradient-mesh">
+      <div class="blob" style="width:560px;height:560px;top:-130px;right:-130px;background:#2d6a4f;opacity:0.2;"></div>
+      <div class="blob" style="width:380px;height:380px;bottom:-100px;left:-80px;background:#c9a227;opacity:0.15;"></div>
+      <div class="blob" style="width:250px;height:250px;top:40%;left:15%;background:#52b788;opacity:0.1;"></div>
+    </div>
+    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content text-center">
+      <div class="reveal" style="font-size:clamp(5rem,10vw,8rem);animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(124,184,122,0.4));">🐱</div>
+      <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);font-weight:900;background:linear-gradient(135deg,#7cb87a,#c9a227,#7cb87a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:1rem 0 0.5rem;">Auf Wiedersehen<br>vom Tauhaus!</h2>
+      <p class="reveal" style="color:#8fa889;letter-spacing:0.3em;text-transform:uppercase;font-size:0.9rem;margin-bottom:2rem;">Rabštejn nad Střelou · Mai 2026</p>
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:700px;margin:0 auto;">
+        <div class="glass-card" style="padding:1rem;text-align:center;">
+          <div style="color:#7cb87a;font-size:0.9rem;font-weight:600;">🌊 Natur pur</div>
+          <div style="color:#8fa889;font-size:0.8rem;margin-top:0.2rem;">Střela-Ufer & Barfuß-Querung</div>
+        </div>
+        <div class="glass-card" style="padding:1rem;text-align:center;">
+          <div style="color:#c9a227;font-size:0.9rem;font-weight:600;">🏰 Geschichte</div>
+          <div style="color:#8fa889;font-size:0.8rem;margin-top:0.2rem;">Burg, Schloss & Steinbrücke</div>
+        </div>
+        <div class="glass-card" style="padding:1rem;text-align:center;">
+          <div style="color:#7cb87a;font-size:0.9rem;font-weight:600;">👀 Panorama</div>
+          <div style="color:#8fa889;font-size:0.8rem;margin-top:0.2rem;">Hraběcí kříž · 485 m</div>
+        </div>
+      </div>
+      <p class="reveal" style="margin-top:1.5rem;color:#8fa889;font-size:0.85rem;">github.com/jbkunama1/4BurgenTourTauhaus</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-controls">
+  <button class="nav-btn" onclick="changeSlide(-1)" aria-label="Zurück">&#8249;</button>
+  <div class="slide-dots" id="dots"></div>
+  <button class="nav-btn" onclick="changeSlide(1)" aria-label="Weiter">&#8250;</button>
+  <span class="slide-counter" id="counter">1 / 9</span>
+</div>
+
+<script>
+  /* ─── Deck Navigation ─── */
+  let current = 1;
+  const total = document.querySelectorAll('.slide').length;
+  const dotsContainer = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  for (let i = 1; i <= total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 1 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+  function goToSlide(n) {
+    document.querySelector('.slide.active').classList.remove('active');
+    const next = document.querySelector(`.slide[data-slide="${n}"]`);
+    next.classList.add('active');
+    animateSlide(next);
+    current = n; updateNav();
+  }
+  function changeSlide(dir) { let n = current + dir; if (n < 1) n = total; if (n > total) n = 1; goToSlide(n); }
+  function updateNav() {
+    document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i+1===current));
+    counter.textContent = current + ' / ' + total;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key==='ArrowRight'||e.key===' ') { e.preventDefault(); changeSlide(1); }
+    if (e.key==='ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+  });
+  let tx=0; document.addEventListener('touchstart',e=>tx=e.touches[0].clientX);
+  document.addEventListener('touchend',e=>{ if(Math.abs(tx-e.changedTouches[0].clientX)>50) changeSlide(tx>e.changedTouches[0].clientX?1:-1); });
+
+  /* ─── Reveal Animation ─── */
+  function animateSlide(slide) {
+    slide.querySelectorAll('.reveal').forEach((el,i) => {
+      el.style.transition='none'; el.style.opacity='0'; el.style.transform='translateY(22px)';
+      el.offsetHeight;
+      const delay=i*0.09;
+      el.style.transition=`opacity 0.4s ease ${delay}s, transform 0.4s ease ${delay}s`;
+      el.style.opacity='1'; el.style.transform='translateY(0)';
+    });
+    animateEffects(slide);
+  }
+
+  /* ─── Slide Effects ─── */
+  function animateEffects(slide) {
+    slide.querySelectorAll('[data-count]:not(.counted)').forEach(el => {
+      el.classList.add('counted');
+      const target=parseInt(el.dataset.count);
+      let cur=0; const step=target/40;
+      const t=setInterval(()=>{ cur+=step; if(cur>=target){cur=target;clearInterval(t);} el.textContent=Math.round(cur).toLocaleString(); },30);
+    });
+  }
+
+  /* ─── Mouse Spotlight ─── */
+  document.addEventListener('mousemove', e => {
+    const s = document.querySelector('.mouse-spotlight');
+    if(s) s.style.background=`radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(124,184,122,0.05), transparent 40%)`;
+  });
+
+  /* ─── Parallax Deco Shapes ─── */
+  let mx=window.innerWidth/2, my=window.innerHeight/2;
+  const cx=window.innerWidth/2, cy=window.innerHeight/2;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function tick(){
+    const ox=(mx-cx)/cx, oy=(my-cy)/cy;
+    document.querySelectorAll('.deco-shape').forEach(s=>{
+      const sp=parseFloat(s.dataset.speed)||0.03;
+      s.style.transform=`translate(${ox*sp*100}px,${oy*sp*100}px)`;
+    });
+    requestAnimationFrame(tick);
+  })();
+
+  /* ─── Particle Canvas ─── */
+  window.initParticles = function(canvas, opts) {
+    if(!canvas) return;
+    const ctx=canvas.getContext('2d');
+    canvas.width=canvas.offsetWidth||window.innerWidth;
+    canvas.height=canvas.offsetHeight||window.innerHeight;
+    const interactive=opts.interactive!==false;
+    const count=opts.count||(interactive?55:18);
+    let pmx=-1000,pmy=-1000;
+    const particles=Array.from({length:count},()=>({
+      x:Math.random()*canvas.width,y:Math.random()*canvas.height,
+      vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+      size:Math.random()*2.5+.8,alpha:Math.random()*.3+.08
+    }));
+    if(interactive){
+      canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();pmx=e.clientX-r.left;pmy=e.clientY-r.top;});
+      canvas.addEventListener('mouseleave',()=>{pmx=-1000;pmy=-1000;});
+    }
+    (function anim(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{
+        if(interactive){const dx=p.x-pmx,dy=p.y-pmy,d=Math.sqrt(dx*dx+dy*dy);if(d<120){const f=(120-d)/120*2;p.vx+=(dx/d)*f*.1;p.vy+=(dy/d)*f*.1;}}
+        p.vx*=.98;p.vy*=.98;p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;
+        if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fillStyle=`rgba(124,184,122,${p.alpha})`;ctx.fill();
+      });
+      requestAnimationFrame(anim);
+    })();
+  };
+  document.querySelectorAll('.particle-canvas').forEach(c=>window.initParticles(c,{interactive:true,count:55}));
+  document.querySelectorAll('.particle-canvas-ambient').forEach(c=>window.initParticles(c,{interactive:false,count:18}));
+
+  /* ─── Animate first slide on load ─── */
+  animateSlide(document.querySelector('.slide.active'));
+</script>
+</body>
+</html>
