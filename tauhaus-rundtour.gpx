@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="TauhausRoute" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="50.043100" lon="13.293500"><name>Tauhaus</name></wpt>
+  <wpt lat="50.042800" lon="13.292800"><name>Strela-Ufer</name></wpt>
+  <wpt lat="50.041900" lon="13.289400"><name>Ort Rabstejn</name></wpt>
+  <wpt lat="50.042200" lon="13.290600"><name>Steinbruecke</name></wpt>
+  <wpt lat="50.042100" lon="13.292350"><name>Schloss/Burg</name></wpt>
+  <wpt lat="50.043500" lon="13.291000"><name>Aussichtspunkt</name></wpt>
+  <wpt lat="50.043100" lon="13.293500"><name>Tauhaus</name></wpt>
+  <trk>
+    <name>Tauhaus Rundtour</name>
+    <trkseg>
+      <trkpt lat="50.043100" lon="13.293500"></trkpt>
+      <trkpt lat="50.042800" lon="13.292800"></trkpt>
+      <trkpt lat="50.041900" lon="13.289400"></trkpt>
+      <trkpt lat="50.042200" lon="13.290600"></trkpt>
+      <trkpt lat="50.042100" lon="13.292350"></trkpt>
+      <trkpt lat="50.043500" lon="13.291000"></trkpt>
+      <trkpt lat="50.043100" lon="13.293500"></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

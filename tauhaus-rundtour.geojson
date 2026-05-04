@@ -1,0 +1,135 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tauhaus Rundtour"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            13.2935,
+            50.0431
+          ],
+          [
+            13.2928,
+            50.0428
+          ],
+          [
+            13.2894,
+            50.0419
+          ],
+          [
+            13.2906,
+            50.0422
+          ],
+          [
+            13.29235,
+            50.0421
+          ],
+          [
+            13.291,
+            50.0435
+          ],
+          [
+            13.2935,
+            50.0431
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tauhaus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2935,
+          50.0431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Strela-Ufer"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2928,
+          50.0428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ort Rabstejn"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2894,
+          50.0419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Steinbruecke"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2906,
+          50.0422
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Schloss/Burg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.29235,
+          50.0421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aussichtspunkt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.291,
+          50.0435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tauhaus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2935,
+          50.0431
+        ]
+      }
+    }
+  ]
+}

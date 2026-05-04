@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>Tauhaus Rundtour</name>
+  <Placemark>
+    <name>Tauhaus</name>
+    <Point><coordinates>13.293500,50.043100,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Strela-Ufer</name>
+    <Point><coordinates>13.292800,50.042800,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Ort Rabstejn</name>
+    <Point><coordinates>13.289400,50.041900,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Steinbruecke</name>
+    <Point><coordinates>13.290600,50.042200,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Schloss/Burg</name>
+    <Point><coordinates>13.292350,50.042100,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Aussichtspunkt</name>
+    <Point><coordinates>13.291000,50.043500,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Tauhaus</name>
+    <Point><coordinates>13.293500,50.043100,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Route</name>
+    <LineString>
+      <coordinates>13.293500,50.043100,0 13.292800,50.042800,0 13.289400,50.041900,0 13.290600,50.042200,0 13.292350,50.042100,0 13.291000,50.043500,0 13.293500,50.043100,0</coordinates>
+    </LineString>
+  </Placemark>
+</Document>
+</kml>
