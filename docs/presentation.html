@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>4-Burgen-Tour Tauhaus – Präsentation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #1b1b1b; }
+
+    .slides { width: 100%; }
+    .slide {
+      width: 100vw; min-height: 100vh;
+      display: none; flex-direction: column;
+      justify-content: flex-end; align-items: flex-start;
+      position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; }
+
+    .slide-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+    }
+    .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.78) 100%);
+    }
+    .content {
+      position: relative; z-index: 2;
+      padding: 3rem 4rem; color: white; width: 100%;
+    }
+    .slide-num {
+      position: absolute; top: 2rem; right: 2rem; z-index: 5;
+      color: rgba(255,255,255,0.5); font-size: 0.9rem;
+    }
+
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 1rem; }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1.2rem; color: #f5c842; }
+    p  { font-size: 1.15rem; max-width: 700px; opacity: 0.9; line-height: 1.7; margin-bottom: 0.8rem; }
+
+    table { border-collapse: collapse; font-size: 1.05rem; width: 100%; max-width: 700px; margin-bottom: 1rem; }
+    td, th { padding: 0.6rem 1.2rem; border: 1px solid rgba(255,255,255,0.25); }
+    th { background: rgba(255,255,255,0.12); color: #f5c842; }
+
+    ul { list-style: none; max-width: 680px; }
+    ul li { padding: 0.5rem 0; padding-left: 2rem; position: relative; font-size: 1.1rem; opacity: 0.92; }
+    ul li::before { content: '🏔'; position: absolute; left: 0; }
+    ul li:nth-child(2)::before { content: '🌊'; }
+    ul li:nth-child(3)::before { content: '👟'; }
+    ul li:nth-child(4)::before { content: '🏰'; }
+    ul li:nth-child(5)::before { content: '👀'; }
+    ul li:nth-child(6)::before { content: '🐱'; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .two-col img { width: 100%; border-radius: 10px; max-height: 350px; object-fit: cover; }
+
+    .nav {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
+      display: flex; gap: 0.7rem;
+    }
+    .nav button {
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);
+      color: white; border-radius: 50%; width: 48px; height: 48px;
+      font-size: 1.2rem; cursor: pointer; backdrop-filter: blur(4px);
+      transition: background 0.2s;
+    }
+    .nav button:hover { background: rgba(255,255,255,0.35); }
+
+    @media print {
+      .slide { display: flex !important; page-break-after: always; height: 100vh; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="slides">
+
+  <!-- FOLIE 1: TITEL -->
+  <div class="slide active">
+    <div class="slide-bg" style="background-image:url('../assets/img/05_schloss_ferne.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">1 / 8</span>
+    <div class="content">
+      <h1>🏰 4-Burgen-Tour<br>am Tauhaus</h1>
+      <p>Fluss · Geschichte · Frühling · Böhmen</p>
+      <p style="opacity:0.6; font-size:0.95rem; margin-top:1rem;">Rabštejn nad Střelou · Mai 2026</p>
+    </div>
+  </div>
+
+  <!-- FOLIE 2: ÜBERBLICK -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('../assets/img/11_strela_bruecke.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">2 / 8</span>
+    <div class="content">
+      <h2>Tour auf einen Blick</h2>
+      <table>
+        <tr><th>Eigenschaft</th><th>Info</th></tr>
+        <tr><td>⏱ Dauer</td><td>90–120 Minuten</td></tr>
+        <tr><td>🔄 Art</td><td>Rundtour (Start = Ziel: Tauhaus)</td></tr>
+        <tr><td>👟 Schwierigkeit</td><td>Leicht bis mittel</td></tr>
+        <tr><td>🏔 Höchster Punkt</td><td>Hraběcí kříž 485 m</td></tr>
+        <tr><td>🌊 Highlight</td><td>Barfuß durch die Střela</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- FOLIE 3: START -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('../assets/img/01_tauhaus.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">3 / 8</span>
+    <div class="content">
+      <h2>Das Tauhaus – Start & Ziel</h2>
+      <p>Direkt an der Střela gelegen – ein idyllisches Ferienhaus mit privatem Flusszugang, Garten und Liegestühlen. Hier beginnt und endet die Tour.</p>
+    </div>
+  </div>
+
+  <!-- FOLIE 4: FLUSS -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('../assets/img/02_strelaufer.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">4 / 8</span>
+    <div class="content">
+      <h2>Die Střela im Frühling</h2>
+      <p>Kirschblütenblätter auf dem klaren Wasser – ein unvergessliches Bild. Entlang des Ufers führt der Weg ruhig und naturnah Richtung Rabštejn.</p>
+    </div>
+  </div>
+
+  <!-- FOLIE 5: BACHQUERUNG -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('../assets/img/04_bachquerung.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">5 / 8</span>
+    <div class="content">
+      <h2>👟 Barfuß durch die Střela</h2>
+      <p>Das wohl unvergesslichste Erlebnis der Tour: Schuhe aus und rein ins kühle, klare Wasser der Střela. Bei gutem Wetter und niedrigem Wasserstand absolut ungefährlich.</p>
+    </div>
+  </div>
+
+  <!-- FOLIE 6: HISTORISCHES -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('../assets/img/10_burg.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">6 / 8</span>
+    <div class="content">
+      <h2>🏰 Rabštejn nad Střelou</h2>
+      <p>Eine der kleinsten historischen Städte Tschechiens. Mittelalterlicher Burgturm, barockes Schloss, Klosterkirche und historische Steinbrücke – alles auf engstem Raum.</p>
+    </div>
+  </div>
+
+  <!-- FOLIE 7: AUSSICHTSPUNKT -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('../assets/img/08_ortskern_panorama.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">7 / 8</span>
+    <div class="content">
+      <h2>👀 Aussichtspunkt Hraběcí kříž (485 m)</h2>
+      <p>Vom Aussichtspunkt aus öffnet sich ein grandioser Blick über den Ortskern von Rabštejn mit der Klosterkirche – direkt belohnt nach dem kurzen Aufstieg.</p>
+    </div>
+  </div>
+
+  <!-- FOLIE 8: ABSCHLUSS -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('../assets/img/12_katze.jpg')"></div>
+    <div class="overlay"></div>
+    <span class="slide-num">8 / 8</span>
+    <div class="content">
+      <h2>🐱 Auf Wiedersehen vom Tauhaus!</h2>
+      <ul>
+        <li>Natur pur am Střela-Ufer</li>
+        <li>Barfuß durch klares Flusswasser</li>
+        <li>Mittelalterliche Burgen & Schloss</li>
+        <li>Panoramablick auf 485 m</li>
+        <li>90–120 min – perfekte Halbtages-Tour</li>
+        <li>...und ein Hauskatze als Willkommensgruß</li>
+      </ul>
+      <p style="margin-top:1.5rem; font-size:0.9rem; opacity:0.6;">github.com/jbkunama1/4BurgenTourTauhaus</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav">
+  <button onclick="prevSlide()">◀</button>
+  <button onclick="nextSlide()">▶</button>
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  function show(n) {
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+  }
+  function nextSlide() { show(current + 1); }
+  function prevSlide() { show(current - 1); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevSlide();
+  });
+</script>
+</body>
+</html>
