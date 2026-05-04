@@ -95,6 +95,46 @@
     .highlight ul li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); }
     .highlight img { width: 100%; border-radius: 10px; }
 
+<!-- KARTE -->
+<section>
+  <h2>🗺️ Karte & Route</h2>
+  <p style="color:#666; margin-bottom:1.5rem; font-family:Georgia,serif; font-size:1rem;">
+    Start & Ziel: Tauhaus, Rabštejn nad Střelou 72, Manětín · 
+    Aussichtspunkt: Hraběcí kříž (485 m)
+  </p>
+
+  <!-- Eingebettete OSM-Karte zentriert auf Rabštejn nad Střelou -->
+  <div style="border-radius:14px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.13); border:1px solid #dcd9d5;">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=13.5600%2C50.0050%2C13.6200%2C50.0350&layer=mapnik&marker=50.0198%2C13.5900"
+      width="100%"
+      height="420"
+      style="display:block; border:none;"
+      allowfullscreen=""
+      loading="lazy"
+      title="Karte: 4-Burgen-Tour am Tauhaus, Rabštejn nad Střelou">
+    </iframe>
+  </div>
+
+  <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem; font-family:Georgia,serif; font-size:0.9rem;">
+    <a href="https://www.openstreetmap.org/#map=14/50.0198/13.5900"
+       target="_blank" rel="noopener noreferrer"
+       style="color:#2d6a4f; text-decoration:none; border:1px solid #2d6a4f; padding:0.4rem 1rem; border-radius:999px;">
+      🗺️ Größere Karte öffnen
+    </a>
+    <a href="https://mapy.cz/turisticka?x=13.590&y=50.020&z=14"
+       target="_blank" rel="noopener noreferrer"
+       style="color:#2d6a4f; text-decoration:none; border:1px solid #2d6a4f; padding:0.4rem 1rem; border-radius:999px;">
+      🧭 Auf Mapy.cz öffnen
+    </a>
+    <a href="assets/route/4BurgenTour_Tauhaus.gpx"
+       download
+       style="color:#c9a227; text-decoration:none; border:1px solid #c9a227; padding:0.4rem 1rem; border-radius:999px;">
+      ⬇️ GPX-Datei herunterladen
+    </a>
+  </div>
+</section>
+    
     /* TIPPS */
     .tipps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
     .tipp-card {
