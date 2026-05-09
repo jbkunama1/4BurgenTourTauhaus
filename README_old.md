@@ -1,5 +1,14 @@
 # 🌲 Tauhaus-Runde: Fluss, Aussicht & Geschichte
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Tech: Markdown](https://img.shields.io/badge/Tech-Markdown-000000?logo=markdown&logoColor=white)
+![Type: Domain Backup](https://img.shields.io/badge/Type-Domain%20Backup-1f6feb)
+![Status: Active](https://img.shields.io/badge/Status-Active-2ea043)
+![Platform: GitHub Pages](https://img.shields.io/badge/Platform-GitHub%20Pages-222222?logo=github&logoColor=white)
+[![Deploy workflow status](https://img.shields.io/github/actions/workflow/status/jbkunama1/4BurgenTourTauhaus/pages.yml?branch=main&label=Deploy "Deploy workflow status")](https://github.com/jbkunama1/4BurgenTourTauhaus/actions/workflows/pages.yml)
+
+<a href="https://www.buymeacoffee.com/highfish" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="217" height="60"></a>
+
 ![Route](https://dummyimage.com/1200x320/1f2937/ffffff&text=Tauhaus+Runde+-+Fluss+%2B+Aussicht+%2B+Burgen%2FSchloss)
 
 > **Start & Ziel:** Tauhaus, Rabštejn nad Střelou 72, Manětín  
