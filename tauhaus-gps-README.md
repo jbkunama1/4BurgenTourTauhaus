@@ -5,7 +5,7 @@
 ![Type: Route Data](https://img.shields.io/badge/Type-Route%20Data-8250df)
 ![Status: Active](https://img.shields.io/badge/Status-Active-2ea043)
 ![Platform: GIS](https://img.shields.io/badge/Platform-GIS%20%2F%20Maps-0a7ea4)
-[![Deploy to GitHub Pages](https://img.shields.io/github/actions/workflow/status/jbkunama1/4BurgenTourTauhaus/pages.yml?branch=main&label=Deploy)](https://github.com/jbkunama1/4BurgenTourTauhaus/actions/workflows/pages.yml)
+[![Deploy workflow status](https://img.shields.io/github/actions/workflow/status/jbkunama1/4BurgenTourTauhaus/pages.yml?branch=main&label=Deploy "Deploy workflow status")](https://github.com/jbkunama1/4BurgenTourTauhaus/actions/workflows/pages.yml)
 
 <a href="https://www.buymeacoffee.com/highfish" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="217" height="60"></a>
 
