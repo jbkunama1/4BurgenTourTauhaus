@@ -7,7 +7,7 @@
 ![Platform: GitHub Pages](https://img.shields.io/badge/Platform-GitHub%20Pages-222222?logo=github&logoColor=white)
 [![Deploy to GitHub Pages](https://img.shields.io/github/actions/workflow/status/jbkunama1/4BurgenTourTauhaus/pages.yml?branch=main&label=Deploy)](https://github.com/jbkunama1/4BurgenTourTauhaus/actions/workflows/pages.yml)
 
-<a href="https://www.buymeacoffee.com/highfish"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="217" height="60"></a>
+<a href="https://www.buymeacoffee.com/highfish" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="217" height="60"></a>
 
 > **Eine Rundtour durch Geschichte, Fluss und Frühling in Böhmen**
 
